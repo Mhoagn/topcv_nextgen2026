@@ -6,7 +6,7 @@ Chào anh/chị, đây là tài liệu hướng dẫn chi tiết từng bước 
 
 ## Phần 1: Hướng Dẫn Cài Đặt Và Chạy Dự Án (Setup Guide)
 
-Dự án này sử dụng **Java 21**, **Spring Boot 4** và cơ sở dữ liệu **MySQL**. 
+Dự án này sử dụng **Java 21**, **Spring Boot ** và cơ sở dữ liệu **MySQL**. 
 
 ### Bước 1: Chuẩn bị môi trường (Prerequisites)
 Vui lòng đảm bảo máy tính chấm điểm đã cài đặt:
@@ -31,16 +31,16 @@ Do cấu hình cấu hình MySQL ở mỗi máy khác nhau, thầy/cô vui lòng
 *   **Chạy bằng IDE (IntelliJ, Eclipse) / Maven:** Mở file `src/main/resources/application.properties` và sửa dòng sau (đổi 3307 thành 3306, đồng thời sửa username và password):
     ```properties
     spring.datasource.url=jdbc:mysql://localhost:3306/nextgen2026?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    spring.datasource.username=root        # <- Thay bằng username của thầy/cô
-    spring.datasource.password=mat_khau    # <- Thay bằng password của thầy/cô
+    spring.datasource.username=root        # <- Thay bằng username của anh/chị
+    spring.datasource.password=mat_khau    # <- Thay bằng password của anh/chị
     ```
 *   **Chạy bằng Docker:** Mở file `docker-compose.yml`, tìm dòng `SPRING_DATASOURCE_URL` đổi 3307 thành 3306, và sửa thông tin đăng nhập:
     ```yaml
       - SPRING_DATASOURCE_URL=jdbc:mysql://host.docker.internal:3306/nextgen2026?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-      - DB_USERNAME=root         # <- Thay bằng username của thầy/cô
-      - DB_PASSWORD=mat_khau     # <- Thay bằng password của thầy/cô
+      - DB_USERNAME=root         # <- Thay bằng username của anh/chị
+      - DB_PASSWORD=mat_khau     # <- Thay bằng password của anh/chị
     ```
-*(Lưu ý: Nếu máy thầy/cô đang chạy MySQL ở port `3307` thì chỉ cần sửa mật khẩu, giữ nguyên số port 3307).*
+*(Lưu ý: Nếu máy anh/chị đang chạy MySQL ở port `3307` thì chỉ cần sửa mật khẩu, giữ nguyên số port 3307).*
 
 ### Bước 4: Chạy Ứng Dụng
 Thầy/cô có thể chọn 1 trong 2 cách sau để chạy:
@@ -63,7 +63,7 @@ docker compose up -d
 ```
 
 ### Bước 5: Kiểm tra API
-Khi ứng dụng đã khởi động thành công ở port `8080`, thầy/cô vui lòng truy cập link sau để xem danh sách API và test trực tiếp (Swagger UI):
+Khi ứng dụng đã khởi động thành công ở port `8080`, anh/chị vui lòng truy cập link sau để xem danh sách API và test trực tiếp (Swagger UI):
  **[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)**
 
 ---
