@@ -1,10 +1,10 @@
-# Hướng Dẫn Chạy Dự Án NextGen 2026 (Dành Cho Giám Khảo Chấm Điểm)
+# Hướng Dẫn Chạy Dự Án NextGen 2026
 
-Chào thầy/cô và các bạn, đây là tài liệu hướng dẫn chi tiết từng bước để cài đặt và chạy dự án **NextGen 2026** (Hệ thống Quản lý Form Động) trên máy cá nhân để phục vụ việc chấm điểm.
+Chào anh/chị, đây là tài liệu hướng dẫn chi tiết từng bước để cài đặt và chạy dự án **NextGen 2026** trên máy cá nhân.
 
 ---
 
-## 🚀 Phần 1: Hướng Dẫn Cài Đặt Và Chạy Dự Án (Setup Guide)
+## Phần 1: Hướng Dẫn Cài Đặt Và Chạy Dự Án (Setup Guide)
 
 Dự án này sử dụng **Java 21**, **Spring Boot 4** và cơ sở dữ liệu **MySQL**. 
 
@@ -64,21 +64,21 @@ docker compose up -d
 
 ### Bước 5: Kiểm tra API
 Khi ứng dụng đã khởi động thành công ở port `8080`, thầy/cô vui lòng truy cập link sau để xem danh sách API và test trực tiếp (Swagger UI):
-👉 **[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)**
+ **[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)**
 
 ---
 
-## 🖼️ Phần 2: Thiết Kế Usecase
+## Phần 2: Thiết Kế Usecase
 Dưới đây là sơ đồ Usecase thể hiện các chức năng chính của hệ thống.
 
 ![Usecase Diagram](./usecase.png)
 
-*   **Admin**: Quản lý hệ thống người dùng, quản lý toàn bộ các biểu mẫu (Forms) trong toàn hệ thống.
-*   **Staff**: Quản trị viên, trực tiếp thiết kế các biểu mẫu (thêm bớt các fields như Text, Number, Date, Select...), cấu hình trường bắt buộc (required) và theo dõi dữ liệu người dùng nộp về biểu mẫu do mình quản lý.
+*   **Admin**: Quản lý toàn bộ các biểu mẫu (Forms) trong toàn hệ thống.
+*   **Staff**: Submit các form biểu mẫu và xem những form đã submit và những form đang ở trạng thái ACTIVE.
 
 ---
 
-## 🗄️ Phần 3: Thiết Kế Cơ Sở Dữ Liệu (Database Design)
+## Phần 3: Thiết Kế Cơ Sở Dữ Liệu (Database Design)
 Hệ thống sử dụng cơ sở dữ liệu quan hệ MySQL. Dưới đây là sơ đồ thiết kế (ERD).
 
 ![Database Schema](./database.png)
@@ -86,13 +86,13 @@ Hệ thống sử dụng cơ sở dữ liệu quan hệ MySQL. Dưới đây là
 Hệ thống được thiết kế bao gồm 5 bảng chính được chuẩn hóa:
 1.  **`users`**: Quản lý tài khoản và phân quyền (`role`: admin / staff).
 2.  **`forms`**: Lưu trữ thông tin chung của biểu mẫu (Tiêu đề, trạng thái active/draft...).
-3.  **`fields`**: Bảng cốt lõi định nghĩa cấu trúc của từng form. Một form có thể có nhiều field, mỗi field có một kiểu (`type`: text, number, date, select). Với loại `select`, các lựa chọn được lưu trữ linh hoạt trong cột `options` dưới định dạng JSON.
+3.  **`fields`**: Bảng cốt lõi định nghĩa cấu trúc của từng form. Một form có thể có nhiều field, mỗi field có một kiểu (`type`: text, number, date, select). Với loại `select`, các lựa chọn được lưu trữ trong cột `options` dưới định dạng JSON.
 4.  **`submissions`**: Quản lý thông tin chung mỗi khi có người dùng nộp form (thời gian nộp, ai nộp).
-5.  **`submission_values`**: Lưu trữ giá trị thực tế của từng field tương ứng với mỗi lượt submission. Cấu trúc này cho phép form có thể mở rộng số lượng câu hỏi vô hạn mà không cần tác động sửa đổi (ALTER) cấu trúc bảng.
+5.  **`submission_values`**: Lưu trữ giá trị thực tế của từng field tương ứng với mỗi lượt submission.
 
 ---
 
-## 🌐 Phần 4: Giải Thích Logic Dữ Liệu Đầu Vào (Input Payload) Các API
+## Phần 4: Giải Thích Logic Dữ Liệu Đầu Vào (Input Payload) Các API
 
 Project sử dụng trực tiếp trường `email` truyền trong body để định danh người dùng.
 
