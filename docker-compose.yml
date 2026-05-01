@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: nextgen2026-app:latest
+    container_name: nextgen2026-app
+    ports:
+      - "8080:8080"
+    environment:
+      # Use host.docker.internal to connect to localhost on the host machine from inside the container
+      - SPRING_DATASOURCE_URL=jdbc:mysql://host.docker.internal:3307/nextgen2026?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - DB_USERNAME=root # Thay bằng username thật của bạn
+      - DB_PASSWORD=1    # Thay bằng password thật của bạn
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
