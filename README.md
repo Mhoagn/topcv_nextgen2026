@@ -25,7 +25,7 @@ Dự án yêu cầu một database MySQL có sẵn ở máy tính chạy ứng d
    - Insert sẵn một số tài khoản mẫu (`admin@company.com`, `staffa@company.com`).
 
 ### Bước 3: Cấu hình kết nối MySQL (Cực kỳ quan trọng)
-Do cấu hình cấu hình MySQL ở mỗi máy khác nhau, thầy/cô vui lòng cấu hình lại thông số đăng nhập MySQL cho khớp với máy chấm điểm.
+Do cấu hình cấu hình MySQL ở mỗi máy khác nhau, anh/chị vui lòng cấu hình lại thông số đăng nhập MySQL cho khớp với máy chấm điểm.
 
 **Nếu dùng Port mặc định của MySQL là `3306`:**
 *   **Chạy bằng IDE (IntelliJ, Eclipse) / Maven:** Mở file `src/main/resources/application.properties` và sửa dòng sau (đổi 3307 thành 3306, đồng thời sửa username và password):
@@ -43,7 +43,7 @@ Do cấu hình cấu hình MySQL ở mỗi máy khác nhau, thầy/cô vui lòng
 *(Lưu ý: Nếu máy anh/chị đang chạy MySQL ở port `3307` thì chỉ cần sửa mật khẩu, giữ nguyên số port 3307).*
 
 ### Bước 4: Chạy Ứng Dụng
-Thầy/cô có thể chọn 1 trong 2 cách sau để chạy:
+Anh/chị có thể chọn 1 trong 2 cách sau để chạy:
 
 **Cách 1: Chạy trực tiếp qua IDE hoặc Maven (Khuyên dùng nếu đã cài sẵn JDK 21)**
 Vì lý do bảo mật, mã nguồn sử dụng biến môi trường `${DB_USERNAME}` và `${DB_PASSWORD}`. Nếu anh/chị chạy thẳng lệnh `./mvnw spring-boot:run` sẽ bị lỗi *Access denied*.
