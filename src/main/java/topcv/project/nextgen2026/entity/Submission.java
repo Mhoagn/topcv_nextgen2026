@@ -1,15 +1,27 @@
 package topcv.project.nextgen2026.entity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.UuidGenerator;
-import topcv.project.nextgen2026.enums.SubmissionStatus;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.annotations.UuidGenerator;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import topcv.project.nextgen2026.enums.SubmissionStatus;
 
 @Entity
 @Table(name = "submissions", indexes = {
@@ -34,7 +46,6 @@ public class Submission {
     @JoinColumn(name = "submitted_by", nullable = false, foreignKey = @ForeignKey(name = "fk_submissions_user"))
     private User submittedBy;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, columnDefinition = "ENUM('valid', 'invalid')")
     private SubmissionStatus status = SubmissionStatus.VALID;
 
